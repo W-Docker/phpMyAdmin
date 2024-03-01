@@ -1,0 +1,29 @@
+version: '3.1'
+
+services:
+
+  db:
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_USER: thien
+      MYSQL_PASSWORD: secret
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./db_data:/var/lib/mysql
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    restart: always
+    environment:
+      MEMORY_LIMIT: -1
+      PMA_HOST: db
+      MYSQL_ROOT_PASSWORD: example
+      UPLOAD_LIMIT: 50M # Adjust as needed
+    ports:
+      - "1111:80"
+
+volumes:
+  db_data:
