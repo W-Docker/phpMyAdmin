@@ -3,7 +3,7 @@ version: '3.1'
 services:
 
   db:
-    image: mysql:5.7
+    image: mariadb:10.5.8
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: secret
@@ -15,7 +15,7 @@ services:
       - ./db_data:/var/lib/mysql
 
   phpmyadmin:
-    image: phpmyadmin/phpmyadmin
+    image: linuxserver/phpmyadmin
     restart: always
     environment:
       MEMORY_LIMIT: -1
